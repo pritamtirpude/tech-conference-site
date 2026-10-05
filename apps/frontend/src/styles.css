@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-jetbrains-mono: 'JetBrains Mono', monospace;
+  --font-chakra-petch: 'Chakra Petch', sans-serif;
+
+  /* Text Size Chakra */
+  --text-size-chakra-1: 80px;
+  --text-size-chakra-mobile-1: 38px;
+
+  /* Line heights */
+  --line-height-100: 100%;
+  --line-height-110: 110%;
+  --line-height-120: 120%;
+  --line-height-130: 130%;
+  --line-height-140: 140%;
+
+  /* Letter spacing */
+  --letter-spacing-0: 0px;
+  --letter-spacing-0-5: 0.5px;
+  --letter-spacing-neg-2: -2px;
+
+  /* Text Presets Chakra */
+  --text-chakra-preset-1: var(--text-size-chakra-1);
+  --text-chakra-preset-1--line-height: var(--line-height-100);
+  --text-chakra-preset-1--letter-spacing: var(--letter-spacing-neg-2);
+
+  --text-chakra-mobile-preset-1: var(--text-size-chakra-mobile-1);
+  --text-chakra-mobile-preset-1--line-height: var(--line-height-100);
+  --text-chakra-mobile-preset-1--letter-spacing: var(--letter-spacing-neg-2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/jetbrains-mono/jetbrains-mono-variable.ttf')
+    format('truetype');
+  font-weight: 100 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('/assets/fonts/chakra-petch/chakra-petch-semibold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('/assets/fonts/chakra-petch/chakra-petch-bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+html,
+body,
+#app {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
