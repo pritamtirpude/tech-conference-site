@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@repo/sanity": "workspace:^",
+    "@sanity/client": "^8.9.0",
+    "@sanity/image-url": "^2.1.1",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "0.10.13",
     "@tanstack/react-query": "5.104.1",

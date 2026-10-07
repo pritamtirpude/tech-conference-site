@@ -4,6 +4,9 @@
     "target": "ES2022",
     "module": "ESNext",
     "lib": ["ES2022"],
+    // Loads the client typings so TypeGen's `declare module '@sanity/client'`
+    // augmentation in sanity.types.ts has a module to augment.
+    "types": ["@sanity/client"],
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,

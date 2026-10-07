@@ -1,4 +1,5 @@
 import {defineConfig} from 'sanity'
+import {dataset, projectId} from '@repo/sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
@@ -11,8 +12,8 @@ export default defineConfig({
   name: 'default',
   title: 'tech-conference',
 
-  projectId: '2ucm6pnj',
-  dataset: 'production',
+  projectId,
+  dataset,
 
   plugins: [structureTool({structure}), visionTool()],
 
