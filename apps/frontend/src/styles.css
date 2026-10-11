@@ -5,9 +5,43 @@
   --font-jetbrains-mono: 'JetBrains Mono', monospace;
   --font-chakra-petch: 'Chakra Petch', sans-serif;
 
+  /* colors */
+  --color-dev-neutral-900: #00151d;
+  --color-dev-neutral-800: #001a24;
+  --color-dev-neutral-600: #33444a;
+  --color-dev-neutral-500: #49616a;
+  --color-dev-neutral-200: #c2c5c2;
+  --color-dev-neutral-100: #fcefe8;
+
+  --color-dev-green-200: #d1ff66;
+
+  --color-dev-yellow-100: #ffe6ba;
+
+  --color-dev-red-100: #fec9c3;
+  --color-dev-red-300: #ff8080;
+
+  --color-dev-cyan-100: #b5e9fc;
+
+  --color-dev-purple-100: #ccc4fd;
+
+  --color-dev-blue-100: #bbd8ff;
+
+  /* shadows */
+  --shadow-dev-1: 4px 4px 0px 0 var(--color-dev-green-200);
+  --shadow-dev-2: 4px 4px 0px 0 var(--color-dev-neutral-100);
+
   /* Text Size Chakra */
+
   --text-size-chakra-1: 80px;
   --text-size-chakra-mobile-1: 38px;
+  --text-size-chakra-2: 32px;
+  --text-size-chakra-tablet-2: 28px;
+  --text-size-chakra-mobile-2: 24px;
+  --text-size-chakra-3: 24px;
+  --text-size-preset-4: 20px;
+  --text-size-preset-5: 16px;
+  --text-size-preset-6: 14px;
+  --text-size-preset-7: 12px;
 
   /* Line heights */
   --line-height-100: 100%;
@@ -29,6 +63,38 @@
   --text-chakra-mobile-preset-1: var(--text-size-chakra-mobile-1);
   --text-chakra-mobile-preset-1--line-height: var(--line-height-100);
   --text-chakra-mobile-preset-1--letter-spacing: var(--letter-spacing-neg-2);
+
+  --text-chakra-preset-2: var(--text-size-chakra-2);
+  --text-chakra-preset-2--line-height: var(--line-height-120);
+  --text-chakra-preset-2--letter-spacing: var(--letter-spacing-0);
+
+  --text-chakra-tablet-preset-2: var(--text-size-chakra-tablet-2);
+  --text-chakra-tablet-preset-2--line-height: var(--line-height-110);
+  --text-chakra-tablet-preset-2--letter-spacing: var(--letter-spacing-0);
+
+  --text-chakra-mobile-preset-2: var(--text-size-chakra-mobile-2);
+  --text-chakra-mobile-preset-2--line-height: var(--line-height-110);
+  --text-chakra-mobile-preset-2--letter-spacing: var(--letter-spacing-0);
+
+  --text-chakra-preset-3: var(--text-size-chakra-3);
+  --text-chakra-preset-3--line-height: var(--line-height-130);
+  --text-chakra-preset-3--letter-spacing: var(--letter-spacing-0);
+
+  --text-preset-4: var(--text-size-preset-4);
+  --text-preset-4--line-height: var(--line-height-140);
+  --text-preset-4--letter-spacing: var(--letter-spacing-0);
+
+  --text-preset-5: var(--text-size-preset-5);
+  --text-preset-5--line-height: var(--line-height-140);
+  --text-preset-5--letter-spacing: var(--letter-spacing-0);
+
+  --text-preset-6: var(--text-size-preset-6);
+  --text-preset-6--line-height: var(--line-height-140);
+  --text-preset-6--letter-spacing: var(--letter-spacing-0);
+
+  --text-preset-7: var(--text-size-preset-7);
+  --text-preset-7--line-height: var(--line-height-140);
+  --text-preset-7--letter-spacing: var(--letter-spacing-0-5);
 }
 
 * {
@@ -65,6 +131,7 @@
 html,
 body,
 #app {
-  min-height: 100vh;
   overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--color-dev-neutral-900);
 }

@@ -1,13 +1,18 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { featuredSpeakersQueryOptions } from "#/lib/speakers.functions";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({ component: App })
+export const Route = createFileRoute("/")({
+  loader: ({ context }) =>
+    context.queryClient.query({
+      ...featuredSpeakersQueryOptions(),
+      // staleTime: 'static',
+    }),
+  component: App,
+});
 
 function App() {
-  return (
-    <main>
-      <h1 className="font-chakra-petch text-chakra-mobile-preset-1">
-        The Tech Conference Site
-      </h1>
-    </main>
-  )
+  const { data: speakers } = useSuspenseQuery(featuredSpeakersQueryOptions());
+
+  return <main className="">dsads</main>;
 }

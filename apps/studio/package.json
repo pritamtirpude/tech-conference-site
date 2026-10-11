@@ -12,17 +12,18 @@
     "start": "sanity start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "import-data": "sanity exec scripts/import-starter-data.ts --with-user-token"
+    "import-data": "sanity exec scripts/import-starter-data.ts --with-user-token",
+    "typegen": "sanity schema extract --enforce-required-fields --force && sanity typegen generate"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
     "@repo/sanity": "workspace:^",
-    "@sanity/vision": "^6.17.0",
+    "@sanity/vision": "^6.18.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "sanity": "^6.17.0",
+    "sanity": "^6.18.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {

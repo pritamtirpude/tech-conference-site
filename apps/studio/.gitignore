@@ -27,3 +27,6 @@
 
 # Dotenv and similar local-only files
 *.local
+
+# Intermediate output of `sanity schema extract` (pnpm typegen)
+/schema.json
