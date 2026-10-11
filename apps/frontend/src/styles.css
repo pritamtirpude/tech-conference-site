@@ -6,25 +6,29 @@
   --font-chakra-petch: 'Chakra Petch', sans-serif;
 
   /* colors */
-  --color-horizon-neutral-900: hsl(197, 100, 6%);
-  --color-horizon-neutral-800: hsl(197, 100, 7%);
-  --color-horizon-neutral-600: hsl(196, 18, 25%);
-  --color-horizon-neutral-500: hsl(196, 18, 35%);
-  --color-horizon-neutral-200: hsl(120, 3, 77%);
-  --color-horizon-neutral-100: hsl(21, 77, 95%);
+  --color-dev-neutral-900: #00151d;
+  --color-dev-neutral-800: #001a24;
+  --color-dev-neutral-600: #33444a;
+  --color-dev-neutral-500: #49616a;
+  --color-dev-neutral-200: #c2c5c2;
+  --color-dev-neutral-100: #fcefe8;
 
-  --color-horizon-green-200: hsl(78, 100, 70%);
+  --color-dev-green-200: #d1ff66;
 
-  --color-horizon-yellow-100: hsl(38, 100, 86%);
+  --color-dev-yellow-100: #ffe6ba;
 
-  --color-horizon-red-100: hsl(6, 97, 88);
-  --color-horizon-red-300: hsl(0, 100, 75);
+  --color-dev-red-100: #fec9c3;
+  --color-dev-red-300: #ff8080;
 
-  --color-horizon-cyan-100: hsl(196, 92, 85);
+  --color-dev-cyan-100: #b5e9fc;
 
-  --color-horizon-purple-100: hsl(248, 93, 88);
+  --color-dev-purple-100: #ccc4fd;
 
-  --color-horizon-blue-100: hsl(214, 100, 87);
+  --color-dev-blue-100: #bbd8ff;
+
+  /* shadows */
+  --shadow-dev-1: 4px 4px 0px 0 var(--color-dev-green-200);
+  --shadow-dev-2: 4px 4px 0px 0 var(--color-dev-neutral-100);
 
   /* Text Size Chakra */
 
@@ -127,6 +131,7 @@
 html,
 body,
 #app {
-  min-height: 100vh;
   overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--color-dev-neutral-900);
 }
