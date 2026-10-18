@@ -261,10 +261,41 @@ export type FEATURED_SPEAKERS_QUERY_RESULT = Array<{
   } | null
 }>
 
+// Source: ../../packages/sanity/src/queries.ts
+// Variable: CONFERENCE_QUERY
+// Query: *[_type == "conference"][0]{    tagline,     startDate,     endDate,     location{venue, cityAbbreviation},    "keynote": *[_type == "talk" && track->name == "Keynote"] | order(day asc, startTime asc)[0]{      title,      day,      startTime,       location,       speaker->{        name,         role,         company,         avatar{asset, hotspot, crop, alt}}    }  }
+export type CONFERENCE_QUERY_RESULT = {
+  tagline: string | null
+  startDate: string
+  endDate: string
+  location: {
+    venue: string
+    cityAbbreviation: string | null
+  } | null
+  keynote: {
+    title: string
+    day: number
+    startTime: string
+    location: string
+    speaker: {
+      name: string
+      role: string | null
+      company: string | null
+      avatar: {
+        asset: SanityImageAssetReference | null
+        hotspot: SanityImageHotspot | null
+        crop: SanityImageCrop | null
+        alt: string | null
+      } | null
+    }
+  } | null
+} | null
+
 // Query TypeMap
 declare global {
   interface SanityQueries {
     '\n  *[_type == "speaker" && featured == true] | order(name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    role,\n    company,\n    // Only what urlFor() and <img alt> need \u2014 also keeps the result\n    // serializable across the server-function boundary.\n    avatar { asset, hotspot, crop, alt }\n  }\n': FEATURED_SPEAKERS_QUERY_RESULT
+    '\n  *[_type == "conference"][0]{\n    tagline, \n    startDate, \n    endDate, \n    location{venue, cityAbbreviation},\n    "keynote": *[_type == "talk" && track->name == "Keynote"] | order(day asc, startTime asc)[0]{\n      title,\n      day,\n      startTime, \n      location, \n      speaker->{\n        name, \n        role, \n        company, \n        avatar{asset, hotspot, crop, alt}}\n    }\n  }\n': CONFERENCE_QUERY_RESULT
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too
