@@ -1,7 +1,7 @@
 import { FEATURED_SPEAKERS_QUERY } from "@repo/sanity";
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import { sanityClient } from "./sanity.server";
+import { sanityClient } from "../lib/sanity.server";
 
 // Runs on the server only; in the client bundle this becomes an RPC stub.
 // The return type comes from TypeGen (FEATURED_SPEAKERS_QUERY_RESULT).

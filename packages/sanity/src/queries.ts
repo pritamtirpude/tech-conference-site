@@ -16,3 +16,23 @@ export const FEATURED_SPEAKERS_QUERY = defineQuery(`
     avatar { asset, hotspot, crop, alt }
   }
 `)
+
+export const CONFERENCE_QUERY = defineQuery(`
+  *[_type == "conference"][0]{
+    tagline, 
+    startDate, 
+    endDate, 
+    location{venue, cityAbbreviation},
+    "keynote": *[_type == "talk" && track->name == "Keynote"] | order(day asc, startTime asc)[0]{
+      title,
+      day,
+      startTime, 
+      location, 
+      speaker->{
+        name, 
+        role, 
+        company, 
+        avatar{asset, hotspot, crop, alt}}
+    }
+  }
+`)
