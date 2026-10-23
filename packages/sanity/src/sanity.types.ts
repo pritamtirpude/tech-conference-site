@@ -291,11 +291,26 @@ export type CONFERENCE_QUERY_RESULT = {
   } | null
 } | null
 
+// Source: ../../packages/sanity/src/queries.ts
+// Variable: TRACKS_QUERY
+// Query: *[_type == "track" && name != "Keynote"] | order(_createdAt asc)
+export type TRACKS_QUERY_RESULT = Array<{
+  _id: string
+  _type: 'track'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  description?: string
+  color: string
+}>
+
 // Query TypeMap
 declare global {
   interface SanityQueries {
     '\n  *[_type == "speaker" && featured == true] | order(name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    role,\n    company,\n    // Only what urlFor() and <img alt> need \u2014 also keeps the result\n    // serializable across the server-function boundary.\n    avatar { asset, hotspot, crop, alt }\n  }\n': FEATURED_SPEAKERS_QUERY_RESULT
     '\n  *[_type == "conference"][0]{\n    tagline, \n    startDate, \n    endDate, \n    location{venue, cityAbbreviation},\n    "keynote": *[_type == "talk" && track->name == "Keynote"] | order(day asc, startTime asc)[0]{\n      title,\n      day,\n      startTime, \n      location, \n      speaker->{\n        name, \n        role, \n        company, \n        avatar{asset, hotspot, crop, alt}}\n    }\n  }\n': CONFERENCE_QUERY_RESULT
+    '\n  *[_type == "track" && name != "Keynote"] | order(_createdAt asc)\n': TRACKS_QUERY_RESULT
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too
