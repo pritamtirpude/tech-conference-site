@@ -36,3 +36,7 @@ export const CONFERENCE_QUERY = defineQuery(`
     }
   }
 `)
+
+export const TRACKS_QUERY = defineQuery(`
+  *[_type == "track" && name != "Keynote"] | order(_createdAt asc)
+`)

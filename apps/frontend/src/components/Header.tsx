@@ -3,7 +3,7 @@ import HamburgerMenu from "./HamburgerMenu";
 
 export default function Header() {
   return (
-    <header className="">
+    <header className="mx-auto w-full max-w-[1676px]">
       <nav className="font-jetbrains-mono flex items-center justify-between py-6">
         <div>
           <img src="/icons/logo.svg" alt="Tech Conference Logo" />
@@ -11,7 +11,7 @@ export default function Header() {
         <ul className="hidden space-x-6 md:flex">
           <li>
             <Link
-              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 px-6 py-2.5 uppercase outline transition-all duration-100"
+              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 focus:outline-dev-green-200 focus:shadow-dev-1 px-6 py-2.5 uppercase outline transition-all duration-100 focus:outline-dashed"
               to="/"
               activeProps={{
                 className:
@@ -29,7 +29,7 @@ export default function Header() {
           </li>
           <li>
             <Link
-              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 px-6 py-2.5 uppercase outline transition-all duration-100"
+              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 focus:outline-dev-green-200 focus:shadow-dev-1 px-6 py-2.5 uppercase outline transition-all duration-100 focus:outline-dashed"
               to="/speakers"
               activeProps={{
                 className:
@@ -47,7 +47,7 @@ export default function Header() {
           </li>
           <li>
             <Link
-              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 px-6 py-2.5 uppercase outline transition-all duration-100"
+              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 focus:outline-dev-green-200 focus:shadow-dev-1 px-6 py-2.5 uppercase outline transition-all duration-100 focus:outline-dashed"
               to="/schedule"
               activeProps={{
                 className:
