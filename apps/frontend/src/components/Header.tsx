@@ -30,24 +30,6 @@ export default function Header() {
           <li>
             <Link
               className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 focus:outline-dev-green-200 focus:shadow-dev-1 px-6 py-2.5 uppercase outline transition-all duration-100 focus:outline-dashed"
-              to="/speakers"
-              activeProps={{
-                className:
-                  "shadow-dev-1 hover:shadow-dev-2 outline-dev-green-200",
-              }}
-              inactiveProps={{
-                className: "hover:shadow-dev-2 outline-dev-neutral-100",
-              }}
-              activeOptions={{
-                exact: true,
-              }}
-            >
-              Speakers
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 focus:outline-dev-green-200 focus:shadow-dev-1 px-6 py-2.5 uppercase outline transition-all duration-100 focus:outline-dashed"
               to="/schedule"
               activeProps={{
                 className:
@@ -61,6 +43,24 @@ export default function Header() {
               }}
             >
               Schedule
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="hover:outline-dev-neutral-100 text-dev-neutral-100 text-preset-6 focus:outline-dev-green-200 focus:shadow-dev-1 px-6 py-2.5 uppercase outline transition-all duration-100 focus:outline-dashed"
+              to="/speakers"
+              activeProps={{
+                className:
+                  "shadow-dev-1 hover:shadow-dev-2 outline-dev-green-200",
+              }}
+              inactiveProps={{
+                className: "hover:shadow-dev-2 outline-dev-neutral-100",
+              }}
+              activeOptions={{
+                exact: true,
+              }}
+            >
+              Speakers
             </Link>
           </li>
         </ul>
