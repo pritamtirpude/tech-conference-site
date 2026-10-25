@@ -246,13 +246,16 @@ export type AllSanitySchemaTypes =
 
 // Source: ../../packages/sanity/src/queries.ts
 // Variable: FEATURED_SPEAKERS_QUERY
-// Query: *[_type == "speaker" && featured == true] | order(name asc) {    _id,    name,    "slug": slug.current,    role,    company,    // Only what urlFor() and <img alt> need — also keeps the result    // serializable across the server-function boundary.    avatar { asset, hotspot, crop, alt }  }
+// Query: *[_type == "speaker" && featured == true] | order(name asc) {    _id,    name,    "slug": slug.current,    role,    company,    "talk": *[_type == "talk" && references(^._id)][0]{title},    // Only what urlFor() and <img alt> need — also keeps the result    // serializable across the server-function boundary.    avatar { asset, hotspot, crop, alt }  }
 export type FEATURED_SPEAKERS_QUERY_RESULT = Array<{
   _id: string
   name: string
   slug: string
   role: string | null
   company: string | null
+  talk: {
+    title: string
+  } | null
   avatar: {
     asset: SanityImageAssetReference | null
     hotspot: SanityImageHotspot | null
@@ -308,7 +311,7 @@ export type TRACKS_QUERY_RESULT = Array<{
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    '\n  *[_type == "speaker" && featured == true] | order(name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    role,\n    company,\n    // Only what urlFor() and <img alt> need \u2014 also keeps the result\n    // serializable across the server-function boundary.\n    avatar { asset, hotspot, crop, alt }\n  }\n': FEATURED_SPEAKERS_QUERY_RESULT
+    '\n   *[_type == "speaker" && featured == true] | order(name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    role,\n    company,\n    "talk": *[_type == "talk" && references(^._id)][0]{title},\n    // Only what urlFor() and <img alt> need \u2014 also keeps the result\n    // serializable across the server-function boundary.\n    avatar { asset, hotspot, crop, alt }\n  }\n': FEATURED_SPEAKERS_QUERY_RESULT
     '\n  *[_type == "conference"][0]{\n    tagline, \n    startDate, \n    endDate, \n    location{venue, cityAbbreviation},\n    "keynote": *[_type == "talk" && track->name == "Keynote"] | order(day asc, startTime asc)[0]{\n      title,\n      day,\n      startTime, \n      location, \n      speaker->{\n        name, \n        role, \n        company, \n        avatar{asset, hotspot, crop, alt}}\n    }\n  }\n': CONFERENCE_QUERY_RESULT
     '\n  *[_type == "track" && name != "Keynote"] | order(_createdAt asc)\n': TRACKS_QUERY_RESULT
   }

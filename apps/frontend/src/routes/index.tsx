@@ -1,3 +1,4 @@
+import FeaturedSpeakers from "#/components/featured_speakers";
 import HeroSection from "#/components/HeroSection";
 import Tracks from "#/components/tracks";
 import { conferenceQueryOptions } from "#/queries/get-conference";
@@ -23,6 +24,8 @@ function Home() {
       <HeroSection />
       {/* Tracks Section */}
       <Tracks />
+      {/* Featured Speakers Section */}
+      <FeaturedSpeakers />
     </>
   );
 }

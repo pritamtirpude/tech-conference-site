@@ -5,12 +5,13 @@ import { defineQuery } from 'groq'
 // `<NAME>_RESULT` type in sanity.types.ts.
 
 export const FEATURED_SPEAKERS_QUERY = defineQuery(`
-  *[_type == "speaker" && featured == true] | order(name asc) {
+   *[_type == "speaker" && featured == true] | order(name asc) {
     _id,
     name,
     "slug": slug.current,
     role,
     company,
+    "talk": *[_type == "talk" && references(^._id)][0]{title},
     // Only what urlFor() and <img alt> need — also keeps the result
     // serializable across the server-function boundary.
     avatar { asset, hotspot, crop, alt }
