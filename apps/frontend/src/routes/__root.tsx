@@ -10,6 +10,7 @@ import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
 import appCss from "../styles.css?url";
 
+import Footer from "#/components/Footer";
 import Header from "#/components/Header";
 import type { QueryClient } from "@tanstack/react-query";
 
@@ -50,6 +51,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body className="overflow-x-hidden px-4 md:px-5 lg:px-10">
         <Header />
         <main className="mx-auto w-full max-w-[1676px]">{children}</main>
+        <Footer />
         <TanStackDevtools
           config={{
             position: "bottom-right",

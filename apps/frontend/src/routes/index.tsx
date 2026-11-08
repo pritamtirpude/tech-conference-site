@@ -1,5 +1,6 @@
 import FeaturedSpeakers from "#/components/featured_speakers";
 import HeroSection from "#/components/HeroSection";
+import ScheduledHighLights from "#/components/scheduled";
 import Tracks from "#/components/tracks";
 import { conferenceQueryOptions } from "#/queries/get-conference";
 import { featuredSpeakersQueryOptions } from "#/queries/get-speakers";
@@ -26,6 +27,8 @@ function Home() {
       <Tracks />
       {/* Featured Speakers Section */}
       <FeaturedSpeakers />
+      {/* Scheduled Highlights */}
+      <ScheduledHighLights />
     </>
   );
 }

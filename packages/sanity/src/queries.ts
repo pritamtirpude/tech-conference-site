@@ -5,17 +5,20 @@ import { defineQuery } from 'groq'
 // `<NAME>_RESULT` type in sanity.types.ts.
 
 export const FEATURED_SPEAKERS_QUERY = defineQuery(`
-   *[_type == "speaker" && featured == true] | order(name asc) {
+ *[_type == "speaker" && featured == true] | order(name asc) {
     _id,
     name,
     "slug": slug.current,
     role,
     company,
-    "talk": *[_type == "talk" && references(^._id)][0]{title},
-    // Only what urlFor() and <img alt> need — also keeps the result
-    // serializable across the server-function boundary.
+    "talk": *[_type == "talk" && references(^._id)][0]{title, description, 
+    day,
+    startTime,
+    endTime,
+    "track": track->{name, color}
+    },
     avatar { asset, hotspot, crop, alt }
-  }
+}
 `)
 
 export const CONFERENCE_QUERY = defineQuery(`
@@ -41,3 +44,16 @@ export const CONFERENCE_QUERY = defineQuery(`
 export const TRACKS_QUERY = defineQuery(`
   *[_type == "track" && name != "Keynote"] | order(_createdAt asc)
 `)
+
+export const SCHEDULED_HIGHLIGHTS_QUERY =
+  defineQuery(`*[_type == "talk" && highlighted == true]{
+    title, 
+    _id, 
+    day, 
+    description, 
+    startTime, 
+    endTime, 
+    location,
+    "speaker": speaker->{name,company,role},
+   "track": track->{name, color}
+ }`)
