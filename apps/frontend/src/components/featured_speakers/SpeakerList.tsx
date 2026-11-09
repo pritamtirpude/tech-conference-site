@@ -1,12 +1,16 @@
 import { featuredSpeakersQueryOptions } from "#/queries/get-speakers";
+import { useUIStore } from "#/store";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
+import SpeakerModal from "../SpeakerModal";
 import SpeakerItem from "./SpeakerItem";
 
 function SpeakerList() {
   const { data: featuredSpeakersData } = useSuspenseQuery(
     featuredSpeakersQueryOptions(),
   );
+  const selectedSpeaker = useUIStore((state) => state.selectedSpeaker);
+  const closeSpeaker = useUIStore((state) => state.closeSpeaker);
 
   return (
     <>
@@ -25,6 +29,9 @@ function SpeakerList() {
           View All Speakers
         </Link>
       </div>
+      {selectedSpeaker && (
+        <SpeakerModal speaker={selectedSpeaker} onClose={closeSpeaker} />
+      )}
     </>
   );
 }
