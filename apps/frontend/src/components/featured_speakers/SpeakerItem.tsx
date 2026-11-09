@@ -2,7 +2,6 @@ import { urlFor } from "#/lib/sanity-image";
 import { useUIStore } from "#/store";
 import type { FEATURED_SPEAKERS_QUERY_RESULT } from "@repo/sanity";
 import { cn } from "cn";
-import SpeakerModal from "../SpeakerModal";
 
 // Derived from TypeGen so it can't drift from FEATURED_SPEAKERS_QUERY.
 export type SpeakerData = FEATURED_SPEAKERS_QUERY_RESULT[number];
@@ -25,18 +24,12 @@ const BG_COLORS = [
 function SpeakerItem({ speaker, index }: SpeakerItemProps) {
   const avatar = speaker.avatar;
 
-  const setIsDialogOpen = useUIStore((state) => state.setIsDialogOpen);
-  const isDialogOpen = useUIStore((state) => state.isDialogOpen);
-
-  const onClose = () => {
-    setIsDialogOpen(false);
-  };
+  const openSpeaker = useUIStore((state) => state.openSpeaker);
 
   return (
     <>
-      {isDialogOpen && <SpeakerModal onClose={onClose} />}
       <button
-        onClick={() => setIsDialogOpen(true)}
+        onClick={() => openSpeaker(speaker)}
         aria-haspopup="dialog"
         className="outline-dev-neutral-600 focus:shadow-dev-1 focus:outline-dev-green-200 flex h-full cursor-pointer flex-col text-left outline focus:outline-dashed"
       >

@@ -15,6 +15,7 @@ export const FEATURED_SPEAKERS_QUERY = defineQuery(`
     day,
     startTime,
     endTime,
+    location,
     "track": track->{name, color}
     },
     avatar { asset, hotspot, crop, alt }

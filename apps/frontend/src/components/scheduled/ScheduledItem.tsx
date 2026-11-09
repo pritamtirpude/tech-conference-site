@@ -1,14 +1,26 @@
-import type { SCHEDULED_HIGHLIGHTS_QUERY_RESULT } from "@repo/sanity";
 import { cn } from "cn";
 import { useState } from "react";
 
-export type ScheduledItemData = SCHEDULED_HIGHLIGHTS_QUERY_RESULT[number];
+// Only the fields the card renders, so any query that supplies them
+// (highlights, a speaker's talk, the keynote) can feed this component.
+export type ScheduledItemData = {
+  title: string;
+  description?: string | null;
+  location?: string | null;
+  day: number;
+  startTime: string;
+  endTime: string;
+  speaker: { name: string; company: string | null };
+  track: { name: string; color: string };
+};
 
 type ScheduledItemProps = {
   schedule: ScheduledItemData;
+  // Set false where the details are shown elsewhere (e.g. the speaker modal).
+  showDetails?: boolean;
 };
 
-function ScheduledItem({ schedule }: ScheduledItemProps) {
+function ScheduledItem({ schedule, showDetails = true }: ScheduledItemProps) {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   const handleIsDetailOpen = () => {
@@ -27,13 +39,13 @@ function ScheduledItem({ schedule }: ScheduledItemProps) {
         </span>
       </div>
       <div
-        className="flex w-full flex-col gap-3 p-6"
+        className="flex w-full flex-col justify-center gap-3 p-6"
         style={{
           backgroundColor: schedule.track.color,
         }}
       >
         <div className="flex w-full flex-col gap-2">
-          <span className="text-chakra-preset-2 text-dev-neutral-900 font-bold">
+          <span className="lg:text-chakra-preset-2 md:text-chakra-tablet-preset-2 text-chakra-mobile-preset-2 text-dev-neutral-900 font-bold lowercase">
             {schedule.title}
           </span>
           <div className="flex items-center gap-2.5">
@@ -48,23 +60,29 @@ function ScheduledItem({ schedule }: ScheduledItemProps) {
             </span>
           </div>
         </div>
-        <div className={cn("block", isDetailsOpen && "hidden")}>
-          <button
-            onClick={handleIsDetailOpen}
-            className="font-jetbrains-mono text-preset-7 text-dev-neutral-600 flex cursor-pointer uppercase"
-          >
-            <img src="/icons/icon-plus.svg" alt="icon plus" />
-            <span>Show Details</span>
-          </button>
-        </div>
+        {showDetails && (
+          <div className={cn("block", isDetailsOpen && "hidden")}>
+            <button
+              onClick={handleIsDetailOpen}
+              className="font-jetbrains-mono text-preset-7 text-dev-neutral-600 flex cursor-pointer uppercase"
+            >
+              <img src="/icons/icon-plus.svg" alt="icon plus" />
+              <span>Show Details</span>
+            </button>
+          </div>
+        )}
         {isDetailsOpen && (
           <div>
-            <p className="text-preset-6 font-jetbrains-mono text-dev-neutral-900">
-              {schedule.description}
-            </p>
-            <p className="font-jetbrains-mono text-preset-6 text-dev-neutral-900 mt-3 font-medium uppercase">
-              Location: {schedule.location}
-            </p>
+            {schedule.description && (
+              <p className="text-preset-6 font-jetbrains-mono text-dev-neutral-900">
+                {schedule.description}
+              </p>
+            )}
+            {schedule.location && (
+              <p className="font-jetbrains-mono text-preset-6 text-dev-neutral-900 mt-3 font-medium uppercase">
+                Location: {schedule.location}
+              </p>
+            )}
             <button
               onClick={handleIsDetailOpen}
               className="font-jetbrains-mono text-preset-7 text-dev-neutral-600 mt-3 flex cursor-pointer uppercase"

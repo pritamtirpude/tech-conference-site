@@ -246,7 +246,7 @@ export type AllSanitySchemaTypes =
 
 // Source: ../../packages/sanity/src/queries.ts
 // Variable: FEATURED_SPEAKERS_QUERY
-// Query: *[_type == "speaker" && featured == true] | order(name asc) {    _id,    name,    "slug": slug.current,    role,    company,    "talk": *[_type == "talk" && references(^._id)][0]{title, description,     day,    startTime,    endTime,    "track": track->{name, color}    },    avatar { asset, hotspot, crop, alt }}
+// Query: *[_type == "speaker" && featured == true] | order(name asc) {    _id,    name,    "slug": slug.current,    role,    company,    "talk": *[_type == "talk" && references(^._id)][0]{title, description,     day,    startTime,    endTime,    location,    "track": track->{name, color}    },    avatar { asset, hotspot, crop, alt }}
 export type FEATURED_SPEAKERS_QUERY_RESULT = Array<{
   _id: string
   name: string
@@ -259,6 +259,7 @@ export type FEATURED_SPEAKERS_QUERY_RESULT = Array<{
     day: number
     startTime: string
     endTime: string
+    location: string
     track: {
       name: string
       color: string
@@ -341,7 +342,7 @@ export type SCHEDULED_HIGHLIGHTS_QUERY_RESULT = Array<{
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    '\n *[_type == "speaker" && featured == true] | order(name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    role,\n    company,\n    "talk": *[_type == "talk" && references(^._id)][0]{title, description, \n    day,\n    startTime,\n    endTime,\n    "track": track->{name, color}\n    },\n    avatar { asset, hotspot, crop, alt }\n}\n': FEATURED_SPEAKERS_QUERY_RESULT
+    '\n *[_type == "speaker" && featured == true] | order(name asc) {\n    _id,\n    name,\n    "slug": slug.current,\n    role,\n    company,\n    "talk": *[_type == "talk" && references(^._id)][0]{title, description, \n    day,\n    startTime,\n    endTime,\n    location,\n    "track": track->{name, color}\n    },\n    avatar { asset, hotspot, crop, alt }\n}\n': FEATURED_SPEAKERS_QUERY_RESULT
     '\n  *[_type == "conference"][0]{\n    tagline, \n    startDate, \n    endDate, \n    location{venue, cityAbbreviation},\n    "keynote": *[_type == "talk" && track->name == "Keynote"] | order(day asc, startTime asc)[0]{\n      title,\n      day,\n      startTime, \n      location, \n      speaker->{\n        name, \n        role, \n        company, \n        avatar{asset, hotspot, crop, alt}}\n    }\n  }\n': CONFERENCE_QUERY_RESULT
     '\n  *[_type == "track" && name != "Keynote"] | order(_createdAt asc)\n': TRACKS_QUERY_RESULT
     '*[_type == "talk" && highlighted == true]{\n    title, \n    _id, \n    day, \n    description, \n    startTime, \n    endTime, \n    location,\n    "speaker": speaker->{name,company,role},\n   "track": track->{name, color}\n }': SCHEDULED_HIGHLIGHTS_QUERY_RESULT
