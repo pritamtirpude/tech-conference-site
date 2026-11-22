@@ -20,7 +20,7 @@ function ScheduleList() {
 
       <div className="flex items-center justify-center">
         <Link
-          to="/speakers"
+          to="/schedule"
           className="text-dev-neutral-100 font-jetbrains-mono focus:outline-dev-green-200 focus:shadow-dev-1 shadow-dev-2 text-preset-5 outline-dev-neutral-100 mt-12 px-6 py-4 font-bold uppercase outline focus:outline-dashed"
         >
           View Full Schedule
