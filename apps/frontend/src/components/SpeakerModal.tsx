@@ -31,7 +31,7 @@ function SpeakerModal({ onClose, speaker }: SpeakerModalProps) {
           onClose();
         }}
         ref={ref}
-        className="bg-dev-neutral-900 outline-dev-neutral-500 fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 px-4 py-5 outline md:px-6 md:py-8 lg:p-10"
+        className="bg-dev-neutral-900 outline-dev-neutral-500 fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 px-4 py-5 outline md:w-auto md:px-6 md:py-8 lg:p-10"
       >
         <div className="flex flex-col gap-4 md:flex-row md:items-center">
           <div

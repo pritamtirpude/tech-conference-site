@@ -3,7 +3,10 @@ import HeroSection from "#/components/HeroSection";
 import ScheduledHighLights from "#/components/scheduled";
 import Tracks from "#/components/tracks";
 import { conferenceQueryOptions } from "#/queries/get-conference";
-import { featuredSpeakersQueryOptions } from "#/queries/get-speakers";
+import {
+  allSpeakersQueryOptions,
+  featuredSpeakersQueryOptions,
+} from "#/queries/get-speakers";
 import { tracksQueryOptions } from "#/queries/get-tracks";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -13,6 +16,7 @@ export const Route = createFileRoute("/")({
       context.queryClient.query(featuredSpeakersQueryOptions()),
       context.queryClient.query(conferenceQueryOptions()),
       context.queryClient.query(tracksQueryOptions()),
+      context.queryClient.query(allSpeakersQueryOptions()),
     ]);
   },
   component: Home,

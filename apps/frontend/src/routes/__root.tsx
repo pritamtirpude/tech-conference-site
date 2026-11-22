@@ -10,6 +10,8 @@ import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
 import appCss from "../styles.css?url";
 
+import { useEffect } from "react";
+import { useMyScheduleStore } from "#/store";
 import Footer from "#/components/Footer";
 import Header from "#/components/Header";
 import type { QueryClient } from "@tanstack/react-query";
@@ -43,6 +45,10 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    void useMyScheduleStore.persist.rehydrate();
+  }, []);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

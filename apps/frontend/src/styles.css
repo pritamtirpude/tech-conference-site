@@ -32,6 +32,7 @@
   --shadow-dev-2: 4px 4px 0px 0 var(--color-dev-neutral-100);
   --shadow-dev-3: 3px 3px 0px 0 var(--color-dev-neutral-900);
   --shadow-dev-4: 3px 3px 0px 0 var(--color-dev-neutral-600);
+  --shadow-dev-5: 4px 4px 0px 0 var(--color-dev-red-300);
 
   /* Text Size Chakra */
   --text-size-chakra-1: 80px;

@@ -22,6 +22,24 @@ export const FEATURED_SPEAKERS_QUERY = defineQuery(`
 }
 `)
 
+export const GET_ALL_SPEAKERS_QUERY = defineQuery(`
+ *[_type == "speaker"] | order(name asc) {
+    _id,
+    name,
+    "slug": slug.current,
+    role,
+    company,
+    "talk": *[_type == "talk" && references(^._id)][0]{title, description, 
+    day,
+    startTime,
+    endTime,
+    location,
+    "track": track->{name, color}
+    },
+    avatar { asset, hotspot, crop, alt }
+}
+`)
+
 export const CONFERENCE_QUERY = defineQuery(`
   *[_type == "conference"][0]{
     tagline, 
@@ -44,6 +62,20 @@ export const CONFERENCE_QUERY = defineQuery(`
 
 export const TRACKS_QUERY = defineQuery(`
   *[_type == "track" && name != "Keynote"] | order(_createdAt asc)
+`)
+
+export const ALL_SCHEDULES_QUERY = defineQuery(`
+  *[_type == "talk"] | order(day asc, startTime asc) {
+    _id,
+    title,
+    day,
+    description,
+    startTime,
+    endTime,
+    location,
+    "speaker": speaker->{name, company, role},
+    "track": track->{_id, name, color}
+  }
 `)
 
 export const SCHEDULED_HIGHLIGHTS_QUERY =
